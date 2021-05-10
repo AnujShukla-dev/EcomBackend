@@ -10,7 +10,7 @@ name:{
     maxlength:32,
     trim: true
    },
-lastName:{
+lastname:{
     type: String,
     maxlength:32,
     trim: true
@@ -34,7 +34,7 @@ lastName:{
         default: 0
     },
     purchases :{
-        typr:Array,
+        type:Array,
         default: []
     }  
 },
@@ -49,9 +49,9 @@ userSchema.virtual("password")
         return this._password
     });
 
-userSchema.method ={
+userSchema.methods ={
     securePassword: function(plainpassword){
-        if(!password) return "";
+        if(!plainpassword) return "";
         try{
             return crypto
                 .createHmac('sha256',this.salt)
@@ -62,7 +62,7 @@ userSchema.method ={
             return ""; 
         }
     },
-    authenticate : function(plainPassword){
+    authenticate : function(plainpassword){
         return this.securePassword(plainpassword) === this.encry_password; 
     }
 }

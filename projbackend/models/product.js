@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const {ObjectId} = mongoose.Schema;
-const productSchema = new moongoose.Schema({
+const productSchema = new mongoose.Schema({
     name :{
         type:String,
         trim: true,
@@ -32,4 +32,6 @@ const productSchema = new moongoose.Schema({
         data:Buffer,
         contentType: String
     }
-},{timestamps:true})
+},{timestamps:true});
+
+module.exports = mongoose.model("Product", productSchema)
